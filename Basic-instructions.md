@@ -176,3 +176,5 @@ If the pip installer isn't updated, many of modules will not be successfully loa
 ```
 pip install --upgrade pip
 ```
+### New data directory  
+In older versions of the instructions data is stored in /nv/vol141/phys_nrf/%Your_Name%/patients/pre directory, was redundant therefore instructions were updated to /nv/vol141/phys_nrf/%Your_Name%/patients. It is possible that some of the paths are not updated to this directory.
