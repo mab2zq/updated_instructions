@@ -37,11 +37,10 @@ module load python/3.6.6
 Now we need to get a copy of the raw data so we can process it. Run the following from your `/nv` directory:
 ```
 mkdir patients
-mkdir patients/pre
 
 # We need a link to this directory inside the `sbrt_radiomics` directory
 cd sbrt_radiomics
-ln -s /nv/vol141/phys_nrf/YourName/patients/pre data
+ln -s /nv/vol141/phys_nrf/YourName/patients data
 
 # Now we'll create links to the DICOM files with the necessary subdirectory structure
 # I created a bash script to do this
@@ -171,3 +170,9 @@ Unfortunately I don't really have any words of wisdom here. The only way to unde
 
 ### Re-preprocessing a patient
 If you need to re-preprocess a patient, you should remove their mask directory. I'm not 100% sure some of my hacks in this part of the code work reliably and predictably if there are already NRRD files in the mask directory.
+
+### Update pip installer
+If the pip installer isn't updated, many of modules will not be successfully loaded.
+```
+pip install --upgrade pip
+```
