@@ -1,3 +1,18 @@
+# The Radiomics Process:
+Obtain raw data for input (CT scans, contours of particular organs) mostly done by Krishni and Marco and others
+Run raw data through pyradiomics software to obtain numerical “features” that describe the raw data (voxel intensity, voxel entropy, etc.) this is what John’s code is for
+Visualize this data using Jupyter notebooks (feel free to branch out if you like but this is a great platform and is very user friendly) this is where a lot of the work comes in, but lots of potential cool results
+
+Links:
+Main Github link: johnmatter/sbrt_radiomics (github.com)
+Basic instructions: Basic instructions · johnmatter/sbrt_radiomics Wiki (github.com)
+PyRadiomics Documentation: Radiomic Features — pyradiomics v3.0.1.post15+g2791e23 documentation
+Accessing Jupyter Notebook via Rivana Jupyter Lab on Rivanna | Research Computing (virginia.edu)
+Coding with Pandas Dataframe pandas.DataFrame — pandas 1.4.2 documentation (pydata.org)
+
+
+
+
 ## Connect to rivanna and clone this repo
 First, we need to connect to rivanna and clone this repository.
 
