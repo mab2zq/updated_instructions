@@ -41,7 +41,7 @@ For Windows computers connecting to rivanna is more difficult. Some of the optio
 
 -[Cygwin64 terminal](https://www.cygwin.com/)
 
--Putty with [X-server](https://teamdynamix.umich.edu/TDClient/47/LSAPortal/KB/ArticleDet?ID=1797)
+-[Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) with [X-server](https://teamdynamix.umich.edu/TDClient/47/LSAPortal/KB/ArticleDet?ID=1797)
 
 -[Virtual Machine](https://www.virtualbox.org/)
 
