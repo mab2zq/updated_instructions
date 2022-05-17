@@ -51,7 +51,7 @@ For Windows computers connecting to rivanna is more difficult. Some of the optio
 
 -Cmd/Powershell with [X-server](https://teamdynamix.umich.edu/TDClient/47/LSAPortal/KB/ArticleDet?ID=1797)
 
-I would recommend the FastX Client. It does not seem to be free, but I obtained it through the university.
+I would recommend the FastX Client.
 
 ## Setup your environment
 Now we need to setup our environment.
