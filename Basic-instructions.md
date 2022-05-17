@@ -9,7 +9,7 @@ Visualize this data using Jupyter notebooks (feel free to branch out if you like
 
 Main Github link: [johnmatter/sbrt_radiomics](https://github.com/johnmatter/sbrt_radiomics)
 
-Basic instructions: [Basic instructions · johnmatter/sbrt_radiomics Wiki](https://github.com/johnmatter/sbrt_radiomics/wiki/Basic-instructions)
+Old instructions: [Basic instructions · johnmatter/sbrt_radiomics Wiki](https://github.com/johnmatter/sbrt_radiomics/wiki/Basic-instructions) 
 
 PyRadiomics Documentation: [Radiomic Features — pyradiomics v3.0.1.post15+g2791e23 documentation](https://pyradiomics.readthedocs.io/en/latest/features.html#)
 
