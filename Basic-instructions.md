@@ -65,16 +65,6 @@ source sbrt_radiomics_env/bin/activate
 pip install numpy matplotlib pandas pydicom pynrrd pyradiomics scipy SimpleITK
 ```
 
-You'll also need to add the following lines to your `.bashrc`:
-```
-module unload python
-module load gcc/7.1.0
-module load intel/18.0
-module load mvapich2/2.3.1
-module load openmpi/3.1.4
-module load python/3.6.6
-```
-
 ## Get the data
 Now we need to get a copy of the raw data so we can process it. Run the following from your `/nv` directory:
 ```
@@ -195,11 +185,54 @@ done
 
 Again, you can submit these jobs one by one using `sbatch` or by using the `find` trick.
 
-## Do something with the features!
-Once you have radiomic features extracted, it's time to load all that data into R or Python so you can do something with that information.
+## Visualizing the Data (using Jupyter Notebook)
 
-I'm going to leave this a little open ended for now, but for some inspiration you can look at the [jupyter](https://jupyter.org) notebooks in 
-`sbrt_radiomics` that I recently started. They're still really sketchy, but they might give you some ideas about how you can load everything into one [pandas DataFrame](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html) and start analyzing/plotting the data.
+#### PyRadiomics Documentation: 
+[Radiomic Features — pyradiomics v3.0.1.post15+g2791e23 documentation](https://pyradiomics.readthedocs.io/en/latest/features.html#)
+
+#### Accessing Jupyter Notebook via Rivanna 
+[Jupyter Lab on Rivanna | Research Computing (virginia.edu)](https://www.rc.virginia.edu/userinfo/rivanna/software/jupyterlab/?msclkid=0386d39db4e811eca7c7bc2db7bf3717)
+    -Use phys_nrf as allocation
+    -Use python 3.8 
+#### Coding with Pandas Dataframe 
+[pandas.DataFrame — pandas 1.4.2 documentation (pydata.org)](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html)
+
+#### Pro-tips (from Grace): 
+When I first started, I spent a few hours going through each line of john’s scripts and googled what each line did -- this really helped get an idea of how to manipulate the data efficiently
+Make tons of comments as you write a script or if you will be giving it to others, it helps you and others understand what you’re doing better
+If an error pops up or output is strange:
+First, save code and restart kernel
+Make print statements between commands to find where things go wrong
+Check file paths and ensure there is data where you are referencing data
+Google error messages and try to find root of error
+If still in doubt and you think it’s an error with rivanna/the system, go to rivanna office hours or submit a ticket: [Support Options | Research Computing (virginia.edu)](https://www.rc.virginia.edu/support/#office-hours) -- they are very very helpful and kind!
+If still in doubt and you think it’s an error with the code, email Krishni, John, or me
+
+### Available Notebooks:
+
+#### NaNcheck.ipynb
+Runs through all patients and all features to check if any output is giving “NAN” (not a number)
+Right now this only accounts for pre timepoints, but could be modified to include all timepoints
+HUcheck_pre.ipynb
+Runs through all patients for the feature “original_firstorder_mean”, which we found to be comparable to the HU value
+Output is a csv file with the following columns: patient (e.g., HI), zbin (e.g., z_bin1), HU in range (e.g., GOOD or BAD), HU value (e.g., 64.5), all zbins good (e.g., GOOD or BAD)
+The output can easily be modified to meet your needs
+
+#### HU_mask_visual_check.ipynb
+This code inputs the pre radiomic features from all patients across all z of the aorta
+It plots a feature vs zbin for each of the different mask options John calculated (JM, JM2, aorta, aorta shrink 1 mm, aorta shrink 3mm, aorta grow 1mm)
+Plotting original_firstorder_mean (HU) vs zbin for each feature helped us decide that JM2 is the best mask option (was closest to “soft tissue” which is in the 30-50 range of HU values)
+
+##### Stable_feat_pre_check.ipynb
+This code inputs the pre radiomic features from all patients across all z of the aorta and then selects the JM2 mask to analyze
+It filters through all features and selects those that show stability across all patients and all z of the aorta. Those selected "Stable Features" are exported to a csv along with the associated mean and std across all patients for each z bin
+We want to identify our stable features because if all patients share these similar values, then these features are the ones that will be good to look for any changes post treatment such as relatedness to cardiac events.
+We consider it stable if mean/stddev > 10
+
+#### Delta_radiomics_heatmap.ipynb
+This code plots the change in stable radiomic features over time as a heatmap
+Right now it's setup to plot one patient at a time and one feature at a time with rows as timepoints and columns as zbins
+You can totally mess around with this, plot patients as rows or columns, plot features as rows or columns, there’s so much potential it just depends on what you want to look at
 
 ## Some warnings
 
