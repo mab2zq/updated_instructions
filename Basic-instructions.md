@@ -199,14 +199,20 @@ Again, you can submit these jobs one by one using `sbatch` or by using the `find
 
 #### Pro-tips (from Grace): 
 When I first started, I spent a few hours going through each line of john’s scripts and googled what each line did -- this really helped get an idea of how to manipulate the data efficiently
+
 Make tons of comments as you write a script or if you will be giving it to others, it helps you and others understand what you’re doing better
 If an error pops up or output is strange:
-First, save code and restart kernel
-Make print statements between commands to find where things go wrong
-Check file paths and ensure there is data where you are referencing data
-Google error messages and try to find root of error
-If still in doubt and you think it’s an error with rivanna/the system, go to rivanna office hours or submit a ticket: [Support Options | Research Computing (virginia.edu)](https://www.rc.virginia.edu/support/#office-hours) -- they are very very helpful and kind!
-If still in doubt and you think it’s an error with the code, email Krishni, John, or me
+
+    -First, save code and restart kernel
+
+    -Make print statements between commands to find where things go wrong
+
+    -Check file paths and ensure there is data where you are referencing data
+
+    -Google error messages and try to find root of error
+
+    -If still in doubt and you think it’s an error with rivanna/the system, go to rivanna office hours or submit a ticket: [Support Options | Research Computing            (virginia.edu)](https://www.rc.virginia.edu/support/#office-hours) -- they are very very helpful and kind!
+    If still in doubt and you think it’s an error with the code, email Krishni, John, or me
 
 ### Available Notebooks:
 
