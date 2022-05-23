@@ -25,17 +25,17 @@ First, we need to connect to rivanna and clone this repository.
 
 I usually connect to rivanna by [connecting to the UVA VPN](https://in.virginia.edu/vpn) and then using ssh in a terminal.
 
-Throughout these instructions I will refer to `/nv/vol141/phys_nrf/YourName` as _your `/nv` directory_.
+Throughout these instructions I will refer to `/home/YourName` as your home directory.
 
 ```
 ssh username@rivanna.hpc.virginia.edu
-cd /nv/vol141/phys_nrf/YourDirectory
+cd /home/YourName
 git clone https://github.com/johnmatter/sbrt_radiomics
 ```
 
-For Windows computers connecting to rivanna is more difficult. Some of the options are:
+For Windows computers connecting to Rivanna is more difficult. Either you need to someone obtain or mimic Linux or use a ssh client. Some of the options are:
 
--Disk partition with a Linux Operating system
+-A disk partition with a Linux Operating system
 
 -Linux Subsystem for Windows
 
@@ -51,12 +51,12 @@ For Windows computers connecting to rivanna is more difficult. Some of the optio
 
 -Cmd/Powershell with [X-server](https://teamdynamix.umich.edu/TDClient/47/LSAPortal/KB/ArticleDet?ID=1797)
 
-I would recommend the FastX Client.
+I am using a disk partition, but I would recommend the FastX Client.
 
 ## Setup your environment
 Now we need to setup our environment.
 
-The following lines will create a local copy of python and any necessary libraries in your `/nv` directory.
+The following lines will create a local copy of python and any necessary libraries in your home directory.
 
 Any time you want to run code interactively (as opposed to via SLURM), you'll need to source this `activate` script.
 ```
@@ -65,14 +65,27 @@ source sbrt_radiomics_env/bin/activate
 pip install numpy matplotlib pandas pydicom pynrrd pyradiomics scipy SimpleITK
 ```
 
+#### Optional (bash only): Edit .bashrc  
+If you would prefer to never deal with needing to setup of the environment again after completing the above step:
+'''
+nano ~/.bashrc
+,,,
+
+And add the following line
+,,,
+source /home/YOURNAME/sbrt_radiomics_env/bin/activate
+'''
+
+If you do not see (sbrt_radiomics_env) before your moniker in the terminal repeat the same process for the .bashprofile file
+
 ## Get the data
-Now we need to get a copy of the raw data so we can process it. Run the following from your `/nv` directory:
+Now we need to get a copy of the raw data so we can process it. Run the following from your home directory:
 ```
 mkdir patients
 
 # We need a link to this directory inside the `sbrt_radiomics` directory
 cd sbrt_radiomics
-ln -s /nv/vol141/phys_nrf/YourName/patients data
+ln -s /home/YourName/patients data
 
 # Now we'll create links to the DICOM files with the necessary subdirectory structure
 # I created a bash script to do this
@@ -81,6 +94,18 @@ cd data
 ./ln.sh
 ```
 
+Since new .dicom files are constantly being generated for patients and stored without any clear sense of organization, it is also important to know how to use symbolic links. We use symbolic links because the patients data takes up too much space to duplication
+
+Generally the command is as follows
+'''
+ln -s 'target_file' 'link_name'
+...
+
+'target_file' is whatever the directory is to the data with the character sequence wildcard character appended to repeat for all data, i.e:
+'''
+/nv/vol141/phys_nrf/Krishni/Patients/FJ/Pre/*
+'''
+'link_name' can be left blank or be written as . to maintain the same original name.
 ## Try preprocessing a patient
 To make sure everything works properly, we're going to try preprocessing a patient's data.
 
@@ -301,10 +326,5 @@ Unfortunately I don't really have any words of wisdom here. The only way to unde
 ### Re-preprocessing a patient
 If you need to re-preprocess a patient, you should remove their mask directory. I'm not 100% sure some of my hacks in this part of the code work reliably and predictably if there are already NRRD files in the mask directory.
 
-### Update pip installer
-If the pip installer isn't updated, many of modules will not be successfully loaded.
-```
-pip install --upgrade pip
-```
 ### New data directory  
 In older versions of the instructions data is stored in /nv/vol141/phys_nrf/%Your_Name%/patients/pre directory, was redundant therefore instructions were updated to /nv/vol141/phys_nrf/%Your_Name%/patients. It is possible that some of the paths are not updated to this directory.
