@@ -33,7 +33,7 @@ cd /home/YourName
 git clone https://github.com/johnmatter/sbrt_radiomics
 ```
 
-For Windows computers connecting to Rivanna is more difficult. Either you need to someone obtain or mimic Linux or use a ssh client. Some of the options are:
+For Windows computers connecting to Rivanna is more difficult. Either you need to obtain/mimic Linux or use a ssh client. Some of the options are:
 
 -A disk partition with a Linux Operating system
 
