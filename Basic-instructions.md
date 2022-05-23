@@ -94,7 +94,7 @@ cd data
 ./ln.sh
 ```
 
-Since new .dicom files are constantly being generated for patients and stored without any clear sense of organization, it is also important to know how to use symbolic links. We use symbolic links because the patients data takes up too much space to duplication
+Since new .dicom files are constantly being generated for patients and stored without any clear sense of organization, it is also important to know how to use symbolic links. We use symbolic links because the patients data takes up too much space to duplication. First create a directory for the patient and subdirectory for the timepoint. In the subdirectory create a new subdirectory names as 'clinical'. From the this directory create symbolic links.
 
 Generally the command is as follows
 '''
@@ -137,7 +137,7 @@ If this is what you see, congratulations! You have successfully preprocessed som
 
 You should delete `dose_in_CT_dimensions.nrrd` for this data set. If you're looking at radiomics as a function of delivered dose you will need this file.
 
-If everything ran smoothly, you should probably also delete `contours.pickle`. These files tend to be huge, and we need to be conscious of how much data we're using as a group on `/nv`.
+If everything ran smoothly, you should probably also delete `contours.pickle`. These files tend to be huge, and we need to be conscious of how much data we're using.
 
 If you run into any problems here, shoot me an email (matter AT virginia) and I'll help you sort it out.
 
@@ -146,7 +146,7 @@ There are a bunch of ways you could extract radiomic features for any image.
 
 For this tutorial, you will use a script I wrote (at Krishni's suggestion) that calculates radiomic features for various regions of the aorta.
 
-From your `/nv` directory, execute the following:
+From your home directory, execute the following:
 ```
 cd sbrt_radiomics/src/radiomics/one_off/binned_in_z/
 ./radiomics.sh BE/Pre
@@ -223,7 +223,7 @@ In the templates replace all relative file paths and also change them in the fol
 
 
 ### Preprocess
-From your `/nv` directory, do the following
+From your home directory, do the following
 ```
 cd sbrt_radiomics/slurm
 patients=(BB1 BM CT DA DJ FL GB HD HR2 KS LC LD LK LL MB MK NJ OW PJ1 PJ2 SB SW WT)
@@ -244,7 +244,7 @@ After all your jobs run, you should see the same type of NRRD and pickle files f
 ### Radiomics
 We'll follow the same procedure for extracting radiomic features. **Note you can only run this part for a patient after you've preprocessed their data.**
 
-From your `/nv` directory, do the following
+From your home directory, do the following
 ```
 cd sbrt_radiomics/src/radiomics/one_off/binned_in_z
 patients=(BB1 BM CT DA DJ FL GB HD HR2 KS LC LD LK LL MB MK NJ OW PJ1 PJ2 SB SW WT)
