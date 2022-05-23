@@ -142,6 +142,18 @@ Now that you've run one patient by hand, it's time to automate the process using
 I wrote some scripts to automate/standardize the process of creating SLURM jobs for preprocessing and radiomic feature extraction.
 
 ### Edit the templates
+Following unresolved complications with Rivanna after maintenance in the original processing designs, we are now only running the radiomics script
+* `sbrt_radiomics/src/radiomics/one_off/binned_in_z/radiomics.sh
+
+So the template (given below) for generating radiomics slurm files must have the change directory command give the new path
+* `sbrt_radiomics/slurm/radiomics_template_slurm.txt`
+
+OLD (delete this one)
+* `cd sbrt_radiomics/src/radiomics`
+
+New (replace with this one)
+* `cd sbrt_radiomics/src/radiomics/one_off/binned_in_z`
+
 On line 5 of the following files, please put your email after `--mail-user=`:
 * `sbrt_radiomics/slurm/preprocess_template_slurm.txt`
 * `sbrt_radiomics/slurm/radiomics_template_slurm.txt`
