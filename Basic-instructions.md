@@ -326,5 +326,7 @@ Unfortunately I don't really have any words of wisdom here. The only way to unde
 ### Re-preprocessing a patient
 If you need to re-preprocess a patient, you should remove their mask directory. I'm not 100% sure some of my hacks in this part of the code work reliably and predictably if there are already NRRD files in the mask directory.
 
-### New data directory  
+### Directory changes 
 In older versions of the instructions data is stored in /nv/vol141/phys_nrf/%Your_Name%/patients/pre directory, was redundant therefore instructions were updated to /nv/vol141/phys_nrf/%Your_Name%/patients. It is possible that some of the paths are not updated to this directory.
+
+Later all directories were changed to home directories instead of the /nv directory since the there were Rivanna issues with data mounting that could interfere with the slurm jobs.
