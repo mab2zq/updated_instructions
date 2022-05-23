@@ -191,34 +191,34 @@ This will tell SLURM to email you when your jobs start/finish/fail/etc
 
 In the same files delete
 
-'''
+```
 module unload python
 module load gcc/7.1.0
 module load intel/18.0
 module load mvapich2/2.3.1
 module load openmpi/3.1.4
 module load python/3.6.6
-'''
+```
 
-These modules are unnecessary for running the code, although may have been used when John wrote the code. These modules interfere with those in place of (sbrt_radiomics_env) and some of them are no longer present in Rivanna and will generate errors. 
+These modules are unnecessary for running the code, although may have been used when John wrote the code. These modules interfere with those in place of `(sbrt_radiomics_env)` and some of them are no longer present in Rivanna and will generate errors. 
 
 #### OPTIONAL: Add error files
 
 Add the following line to generate error files. These should not be necessary since the code is expected to be working, but can be useful in troubleshooting.
 
-'''
+```
 #SBATCH --error=preprocess_PATIENTSTR.err
-'''
+```
 
 #### OPTIONAL: Change all file paths to absolute
 
 In the templates replace all relative file paths and also change them in the following three files
 
-'''
+```
 /home/YOURNAME/sbrt_radiomics/src/preprocess/proprocess.sh
 /home/YOURNAME/sbrt_radiomics/src/radiomics/radiomics.sh
 /home/YOURNAME/sbrt_radiomics/src/radiomics/one_off/binned_in_z/radiomics.sh
-'''
+```
 
 
 
